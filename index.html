@@ -9,7 +9,7 @@
             --main-yellow: #FFDD00;
             --main-dark: #1A1A1A;
             --main-light: #FFFFFF;
-            --gray-bg: #F5F5F5;
+            --gray-bg: #F9F9F9;
         }
         
         body {
@@ -65,10 +65,10 @@
             padding-left: 15px;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
+        /* Центрируем одну карточку, чтобы она красиво смотрелась по центру */
+        .article-card-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .card {
@@ -76,25 +76,47 @@
             border: 2px solid var(--main-dark);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 4px 4px 0px var(--main-dark);
+            box-shadow: 6px 6px 0px var(--main-dark);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-img-preview {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--main-dark);
         }
 
         .card-content {
-            padding: 25px;
+            padding: 30px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: var(--main-yellow);
+            color: var(--main-dark);
+            padding: 4px 10px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border: 1px solid var(--main-dark);
         }
 
         .card-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin: 0 0 12px 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 0 15px 0;
             line-height: 1.3;
         }
 
         .card-text {
-            font-size: 1rem;
-            color: #444;
-            line-height: 1.5;
-            margin-bottom: 25px;
+            font-size: 1.05rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
 
         .card-btn {
@@ -102,10 +124,16 @@
             background: var(--main-dark);
             color: var(--main-yellow);
             text-decoration: none;
-            padding: 12px 25px;
+            padding: 14px 30px;
             border-radius: 6px;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        .card-btn:hover {
+            background: #333;
         }
 
         footer {
@@ -113,7 +141,7 @@
             color: #666;
             text-align: center;
             padding: 20px;
-            margin-top: 60px;
+            margin-top: 80px;
             font-size: 0.9rem;
         }
     </style>
@@ -130,8 +158,27 @@
             Привет! Вы на платформе Easy Choice. Мы вручную проанализировали сотни моделей роботов-пылесосов и гаджетов, разложили по полочкам их реальные характеристики и убрали всю воду. Наша цель — уберечь вас от импульсивных покупок и помочь выбрать то, что действительно работает под ваш бюджет.
         </div>
 
-        <h2 class="section-title">Свежие обзоры и гиды 2026</h2>
+        <h2 class="section-title">Главный разбор недели</h2>
         
-        <div class="grid">
+        <div class="article-card-wrapper">
+            <!-- КРАСИВАЯ ПОЛНОЦЕННАЯ КАРТОЧКА ОБЗОРА -->
             <div class="card">
-                <div class="card
+                <!-- Картинка-превью прямо из твоей статьи в Дзене -->
+                <img src="https://avatars.dzeninfra.ru/get-zen_doc/271868/pub_6a4f276ba4e2456ec32b2dd8_6a4f27f0a4e2456ec32b2f67/scale_1200" class="card-img-preview" alt="Превью статьи">
+                
+                <div class="card-content">
+                    <span class="card-tag">Гид по выбору</span>
+                    <h3 class="card-title">Вертикальный пылесос 2026: Как не купить просто «красивую метлу»</h3>
+                    <p class="card-text">Беспроводные пылесосы бьют рекорды продаж. Но как среди сотен ярких LED-экранов выбрать модель с реальной мощностью всасывания, а не дорогую игрушку для сбора крошек? Разбираем аэроватты, щетки и фильтры.</p>
+                    <a href="vertical-vacuum.html" class="card-btn">Читать честный обзор →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Easy Choice. Все права защищены. Контент создан для людей.
+    </footer>
+
+</body>
+</html>
