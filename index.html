@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Choice — Честные обзоры и сравнения гаджетов</title>
+    <style>
+        :root {
+            --main-yellow: #FFDD00;
+            --main-dark: #1A1A1A;
+            --main-light: #FFFFFF;
+            --gray-bg: #F5F5F5;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--main-light);
+            color: var(--main-dark);
+        }
+
+        header {
+            background-color: var(--main-dark);
+            color: var(--main-yellow);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            color: var(--main-light);
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .about-box {
+            background-color: var(--main-yellow);
+            padding: 30px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-weight: 600;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--main-yellow);
+            padding-left: 15px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--main-light);
+            border: 2px solid var(--main-dark);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            background-color: var(--main-dark);
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .card-btn {
+            display: inline-block;
+            background: var(--main-dark);
+            color: var(--main-yellow);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: var(--main-dark);
+            color: #666;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>EASY CHOICE</h1>
+        <p>Бытовая техника и электроника без маркетинговой шелухи</p>
+    </header>
+
+    <div class="container">
+        <div class="about-box">
+            Привет! Вы на платформе Easy Choice. Мы вручную проанализировали сотни моделей роботов-пылесосов и гаджетов, разложили по полочкам их реальные характеристики и убрали всю воду. Наша цель — уберечь вас от импульсивных покупок и помочь выбрать то, что действительно работает под ваш бюджет.
+        </div>
+
+        <h2 class="section-title">Каталог честных обзоров 2026</h2>
+        
+        <div class="grid">
+            <!-- Первая карточка-заглушка (сюда мы потом вставим твой первый реальный обзор) -->
+            <div class="card">
+                <div class="card-content">
+                    <h3 class="card-title">Ловушка за 5 тысяч: Умный замок и вызов МЧС</h3>
+                    <p class="card-text">В 2026 году классические железные ключи кажутся пережитком прошлого. Зачем носить с собой тяжелую связку, если можно открывать дверь отпечатком пальца? Разбираемся в подводных камнях бюджетных моделей.</p>
+                    <a href="#" class="card-btn">Читать обзор →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Easy Choice. Все права защищены. Контент создан для людей.
+    </footer>
+
+</body>
+</html>
