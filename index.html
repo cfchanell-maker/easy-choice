@@ -23,21 +23,29 @@
         header {
             background-color: var(--main-dark);
             color: var(--main-yellow);
-            padding: 40px 20px;
+            padding: 35px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: -1px;
+        /* Стильная интеграция твоего нового логотипа logo_izichois.jpg */
+        .brand-logo {
+            height: 100px;
+            width: 100px;
+            object-fit: cover;
+            border-radius: 18px; /* Красивое скругление, как у иконок современных приложений */
+            border: 3px solid var(--main-yellow); /* Фирменная жёлтая рамка, чтобы отделить от тёмного фона */
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Плавная тень для объёма */
         }
 
         header p {
-            margin: 10px 0 0 0;
+            margin: 5px 0 0 0;
             color: var(--main-light);
             font-size: 1.2rem;
+            font-weight: 500;
         }
 
         .container {
@@ -157,7 +165,8 @@
 <body>
 
     <header>
-        <h1>EASY CHOICE</h1>
+        <!-- Твой новый официальный логотип -->
+        <img src="logo_izichois.jpg" class="brand-logo" alt="Easy Choice">
         <p>Бытовая техника и электроника без маркетинговой шелухи</p>
     </header>
 
@@ -168,7 +177,6 @@
 
         <h2 class="section-title">Наши честные разборы</h2>
         
-        <!-- Сюда JavaScript будет сам подставлять карточки статей из JSON -->
         <div class="articles-grid" id="articles-container">
             <p style="color: #666;">Загрузка обзоров...</p>
         </div>
@@ -178,18 +186,15 @@
         &copy; 2026 Easy Choice. Все права защищены. Контент создан для людей.
     </footer>
 
-    <!-- Умный скрипт автоматизации -->
     <script>
         async function loadArticles() {
             try {
-                // Загружаем наш файл-базу данных
                 const response = await fetch('articles.json');
                 const articles = await response.json();
                 
                 const container = document.getElementById('articles-container');
-                container.innerHTML = ''; // Очищаем текст загрузки
+                container.innerHTML = '';
 
-                // Проходимся по каждой статье и создаем HTML-код карточки
                 articles.forEach(article => {
                     const cardHtml = `
                         <div class="card">
@@ -210,7 +215,6 @@
             }
         }
 
-        // Запускаем автоматику при загрузке страницы
         window.onload = loadArticles;
     </script>
 
