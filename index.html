@@ -65,8 +65,12 @@
             padding-left: 15px;
         }
 
-        .article-card-wrapper {
-            max-width: 600px;
+        /* Сетка для карточек статей */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -78,21 +82,25 @@
             box-shadow: 6px 6px 0px var(--main-dark);
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
 
         .card-img-preview {
             width: 100%;
-            height: 250px;
+            height: 220px;
             object-fit: cover;
             border-bottom: 2px solid var(--main-dark);
         }
 
         .card-content {
-            padding: 30px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .card-tag {
-            display: inline-block;
+            align-self: flex-start;
             background: var(--main-yellow);
             color: var(--main-dark);
             padding: 4px 10px;
@@ -105,29 +113,31 @@
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 800;
-            margin: 0 0 15px 0;
+            margin: 0 0 12px 0;
             line-height: 1.3;
         }
 
         .card-text {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: #333;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
         }
 
         .card-btn {
-            display: inline-block;
+            display: block;
             background: var(--main-dark);
             color: var(--main-yellow);
             text-decoration: none;
-            padding: 14px 30px;
+            padding: 12px 20px;
             border-radius: 6px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-align: center;
+            margin-top: auto;
         }
 
         .card-btn:hover {
@@ -156,26 +166,53 @@
             Привет! Вы на платформе Easy Choice. Мы вручную проанализировали сотни моделей роботов-пылесосов и гаджетов, разложили по полочкам их реальные характеристики и убрали всю воду. Наша цель — уберечь вас от импульсивных покупок и помочь выбрать то, что действительно работает под ваш бюджет.
         </div>
 
-        <h2 class="section-title">Главный разбор недели</h2>
+        <h2 class="section-title">Наши честные разборы</h2>
         
-        <div class="article-card-wrapper">
-            <div class="card">
-                <!-- Ссылка на твой новый файл PNG -->
-                <img src="main-vacuum.png?v=1" class="card-img-preview" alt="Превью статьи">
-                
-                <div class="card-content">
-                    <span class="card-tag">Гид по выбору</span>
-                    <h3 class="card-title">Вертикальный пылесос 2026: Как не купить просто «красивую метлу»</h3>
-                    <p class="card-text">Беспроводные пылесосы бьют рекорды продаж. Но как среди сотен ярких LED-экранов выбрать модель с реальной мощностью всасывания, а не дорогую игрушку для сбора крошек? Разбираем аэроватты, щетки и фильтры.</p>
-                    <a href="vertical-vacuum.html" class="card-btn">Читать честный обзор →</a>
-                </div>
-            </div>
+        <!-- Сюда JavaScript будет сам подставлять карточки статей из JSON -->
+        <div class="articles-grid" id="articles-container">
+            <p style="color: #666;">Загрузка обзоров...</p>
         </div>
     </div>
 
     <footer>
         &copy; 2026 Easy Choice. Все права защищены. Контент создан для людей.
     </footer>
+
+    <!-- Умный скрипт автоматизации -->
+    <script>
+        async function loadArticles() {
+            try {
+                // Загружаем наш файл-базу данных
+                const response = await fetch('articles.json');
+                const articles = await response.json();
+                
+                const container = document.getElementById('articles-container');
+                container.innerHTML = ''; // Очищаем текст загрузки
+
+                // Проходимся по каждой статье и создаем HTML-код карточки
+                articles.forEach(article => {
+                    const cardHtml = `
+                        <div class="card">
+                            <img src="${article.image}" class="card-img-preview" alt="Превью статьи">
+                            <div class="card-content">
+                                <span class="card-tag">${article.tag}</span>
+                                <h3 class="card-title">${article.title}</h3>
+                                <p class="card-text">${article.description}</p>
+                                <a href="${article.link}" class="card-btn">Читать честный обзор →</a>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += cardHtml;
+                });
+            } catch (error) {
+                console.error('Ошибка загрузки статей:', error);
+                document.getElementById('articles-container').innerHTML = '<p>Не удалось загрузить список обзоров.</p>';
+            }
+        }
+
+        // Запускаем автоматику при загрузке страницы
+        window.onload = loadArticles;
+    </script>
 
 </body>
 </html>
