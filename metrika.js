@@ -6,15 +6,12 @@
 })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109648053', 'ym');
 
 ym(109648053, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-// Google Analytics (Google tag)
-(function(){
-    var script = document.createElement('script');
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-NSCGYP4J0M";
-    script.async = true;
-    document.head.appendChild(script);
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSCGYP4J0M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-NSCGYP4J0M');
-})();
+  gtag('config', 'G-NSCGYP4J0M');
+</script>
