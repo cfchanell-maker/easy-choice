@@ -14,3 +14,13 @@ ym(109648053, 'init', {
     url: location.href, 
     accurateTrackBounce:true
 });
+// --- Код Google Analytics 4 ---
+var gaScript = document.createElement('script');
+gaScript.async = true;
+gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-NSCGYP4J0M';
+document.head.appendChild(gaScript);
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NSCGYP4J0M');
