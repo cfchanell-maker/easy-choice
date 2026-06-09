@@ -32,15 +32,14 @@
             text-align: center;
         }
 
-        /* Стильная интеграция твоего нового логотипа logo_izichois.jpeg */
         .brand-logo {
             height: 100px;
             width: 100px;
             object-fit: cover;
-            border-radius: 18px; /* Красивое скругление, как у иконок современных приложений */
-            border: 3px solid var(--main-yellow); /* Фирменная жёлтая рамка, чтобы отделить от тёмного фона */
+            border-radius: 18px; 
+            border: 3px solid var(--main-yellow); 
             margin-bottom: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Плавная тень для объёма */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
         }
 
         header p {
@@ -75,7 +74,6 @@
             padding-left: 15px;
         }
 
-        /* Сетка для карточек статей */
         .articles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -84,6 +82,7 @@
             margin: 0 auto;
         }
 
+        /* Изменения здесь: карточка теперь ссылка, убираем подчеркивание и задаем цвет */
         .card {
             background: var(--main-light);
             border: 2px solid var(--main-dark);
@@ -93,6 +92,21 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            text-decoration: none; /* Убираем синее подчеркивание от ссылки */
+            color: inherit; /* Наследуем цвет текста */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Плавная анимация наведения */
+            cursor: pointer;
+        }
+
+        /* Эффект при наведении на всю карточку */
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0px var(--main-dark);
+        }
+
+        /* При наведении на карточку меняем цвет кнопки для живости */
+        .card:hover .card-btn {
+            background: #333;
         }
 
         .card-img-preview {
@@ -148,10 +162,7 @@
             font-size: 0.95rem;
             text-align: center;
             margin-top: auto;
-        }
-
-        .card-btn:hover {
-            background: #333;
+            transition: background 0.2s ease;
         }
 
         footer {
@@ -167,7 +178,6 @@
 <body>
 
     <header>
-        <!-- Твой новый официальный логотип -->
         <img src="logo_izichois.jpeg" class="brand-logo" alt="Easy Choice">
         <p>Бытовая техника и электроника без маркетинговой шелухи</p>
     </header>
@@ -197,28 +207,6 @@
                 const container = document.getElementById('articles-container');
                 container.innerHTML = '';
 
-                articles.forEach(article => {
-                    const cardHtml = `
-                        <div class="card">
-                            <img src="${article.image}" class="card-img-preview" alt="Превью статьи">
-                            <div class="card-content">
-                                <span class="card-tag">${article.tag}</span>
-                                <h3 class="card-title">${article.title}</h3>
-                                <p class="card-text">${article.description}</p>
-                                <a href="${article.link}" class="card-btn">Читать честный обзор →</a>
-                            </div>
-                        </div>
-                    `;
-                    container.innerHTML += cardHtml;
-                });
-            } catch (error) {
-                console.error('Ошибка загрузки статей:', error);
-                document.getElementById('articles-container').innerHTML = '<p>Не удалось загрузить список обзоров.</p>';
-            }
-        }
-
-        window.onload = loadArticles;
-    </script>
-
-</body>
-</html>
+                // Изменено формирование карточки:
+                // Теперь <a href="..."> оборачивает весь контент, а кнопка стала <span>
+                articles.forEach(
